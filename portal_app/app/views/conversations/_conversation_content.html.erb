@@ -1,0 +1,14 @@
+<%# app/views/conversations/_conversation_content.html.erb %>
+<%= turbo_frame_tag "active_chat_messages" do %>
+  <div id="messages-list" style="padding: 16px;">
+    <% messages.each do |message| %>
+      <%= render partial: 'messages/message', locals: { message: message } %>
+    <% end %>
+  </div>
+
+  <script>
+    // Αυτόματο scroll κάτω στο τελευταίο μήνυμα
+    var container = document.getElementById("messages"); // Το ID από το application.html.erb
+    if (container) { container.scrollTop = container.scrollHeight; }
+  </script>
+<% end %>

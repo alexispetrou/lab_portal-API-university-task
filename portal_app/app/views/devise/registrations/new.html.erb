@@ -1,0 +1,146 @@
+<div style="min-height: 100vh; display: flex; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; overflow: hidden;">
+  
+  <!-- Αριστερή πλευρά - Εισαγωγή -->
+  <div style="flex: 1; min-height: 100vh; background: linear-gradient(135deg, #111827 0%, #1f2937 100%); display: flex; align-items: center; justify-content: center; padding: 40px;">
+    <div style="color: white; text-align: center; max-width: 400px;">
+      <div style="margin-bottom: 40px;">
+        <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 20px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <h1 style="font-size: 36px; font-weight: 800; margin-bottom: 16px; letter-spacing: -0.5px;">Καλώς Ήρθατε!</h1>
+        <p style="font-size: 18px; opacity: 0.9; line-height: 1.6;">Δημιουργήστε λογαριασμό στο Lab Portal για να έχετε πρόσβαση σε όλα τα εργαστήρια και τα εργαλεία.</p>
+      </div>
+      
+      <div style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 24px; text-align: left; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);">
+        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 12px; color: #e5e7eb;">Τι θα αποκτήσετε:</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+          <li style="display: flex; align-items: flex-start; margin-bottom: 10px; font-size: 14px; color: #d1d5db;">
+            <svg style="margin-right: 10px; margin-top: 2px; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Πρόσβαση σε όλα τα εργαστήρια
+          </li>
+          <li style="display: flex; align-items: flex-start; margin-bottom: 10px; font-size: 14px; color: #d1d5db;">
+            <svg style="margin-right: 10px; margin-top: 2px; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Διαχείριση προφίλ με ενδιαφέροντα
+          </li>
+          <li style="display: flex; align-items: flex-start; font-size: 14px; color: #d1d5db;">
+            <svg style="margin-right: 10px; margin-top: 2px; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Σύνδεση μέσω Google/Facebook
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Δεξιά πλευρά - Φόρμα -->
+  <div style="flex: 1; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px; background: white; overflow-y: auto;">
+    <div style="width: 100%; max-width: 480px; padding: 20px 0;">
+      
+      <div style="text-align: center; margin-bottom: 32px;">
+        <h2 style="font-size: 28px; font-weight: 800; color: #111827; letter-spacing: -0.025em; margin: 0;">Δημιουργία Λογαριασμού</h2>
+        <p style="color: #6b7280; margin-top: 8px; font-size: 14px;">Γίνετε μέλος της κοινότητας του Lab Portal</p>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <%# Στοιχεία Προφίλ %>
+        <div style="margin-bottom: 20px;">
+          <%= f.label :name, "Ονοματεπώνυμο", style: "display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px;" %>
+          <%= f.text_field :name, autofocus: true, placeholder: "Γιάννης Παπαδόπουλος", 
+              style: "width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; outline: none; box-sizing: border-box; transition: border-color 0.2s;",
+              onfocus: "this.style.borderColor='#6366f1'; this.style.boxShadow='0 0 0 3px rgba(99, 102, 241, 0.1)';",
+              onblur: "this.style.borderColor='#d1d5db'; this.style.boxShadow='none';" %>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <%= f.label :email, style: "display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px;" %>
+          <%= f.email_field :email, autocomplete: "email", placeholder: "you@example.com", 
+              style: "width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; outline: none; box-sizing: border-box; transition: border-color 0.2s;",
+              onfocus: "this.style.borderColor='#6366f1'; this.style.boxShadow='0 0 0 3px rgba(99, 102, 241, 0.1)';",
+              onblur: "this.style.borderColor='#d1d5db'; this.style.boxShadow='none';" %>
+        </div>
+
+        <%# Ενδιαφέροντα & Μαθήματα %>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+          <div>
+            <%= f.label :interests, "Ενδιαφέροντα", style: "display: block; font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 6px;" %>
+            <%= f.text_field :interests, placeholder: "π.χ. Java, AI", 
+                style: "width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 13px; outline: none; box-sizing: border-box; transition: border-color 0.2s;",
+                onfocus: "this.style.borderColor='#6366f1';",
+                onblur: "this.style.borderColor='#d1d5db';" %>
+          </div>
+          <div>
+            <%= f.label :courses, "Μαθήματα", style: "display: block; font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 6px;" %>
+            <%= f.text_field :courses, placeholder: "π.χ. Ruby on Rails", 
+                style: "width: 100%; padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 13px; outline: none; box-sizing: border-box; transition: border-color 0.2s;",
+                onfocus: "this.style.borderColor='#6366f1';",
+                onblur: "this.style.borderColor='#d1d5db';" %>
+          </div>
+        </div>
+
+        <%# Κωδικοί %>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 24px;">
+          <div>
+            <%= f.label :password, "Κωδικός", style: "display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px;" %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "••••••••", 
+                style: "width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; outline: none; box-sizing: border-box; transition: border-color 0.2s;",
+                onfocus: "this.style.borderColor='#6366f1'; this.style.boxShadow='0 0 0 3px rgba(99, 102, 241, 0.1)';",
+                onblur: "this.style.borderColor='#d1d5db'; this.style.boxShadow='none';" %>
+          </div>
+          <div>
+            <%= f.label :password_confirmation, "Επιβεβαίωση", style: "display: block; font-size: 14px; font-weight: 500; color: #374151; margin-bottom: 6px;" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "••••••••", 
+                style: "width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; outline: none; box-sizing: border-box; transition: border-color 0.2s;",
+                onfocus: "this.style.borderColor='#6366f1'; this.style.boxShadow='0 0 0 3px rgba(99, 102, 241, 0.1)';",
+                onblur: "this.style.borderColor='#d1d5db'; this.style.boxShadow='none';" %>
+          </div>
+        </div>
+
+        <%= f.submit "Δημιουργία Λογαριασμού", 
+            style: "width: 100%; padding: 14px; background-color: #111827; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;",
+            onmouseover: "this.style.backgroundColor='#000'; this.style.transform='translateY(-1px)';",
+            onmouseout: "this.style.backgroundColor='#111827'; this.style.transform='translateY(0)';" %>
+        
+      <% end %>
+
+      <%# Social Logins %>
+      <div style="margin-top: 32px; position: relative;">
+        <div style="position: absolute; inset: 0; display: flex; align-items: center;"><div style="width: 100%; border-top: 1px solid #e5e7eb;"></div></div>
+        <div style="position: relative; display: flex; justify-content: center; font-size: 13px;"><span style="background: white; padding: 0 8px; color: #6b7280;">Εναλλακτική εγγραφή</span></div>
+      </div>
+
+      <div style="margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <%= button_to user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, 
+            style: "width: 100%; display: flex; align-items: center; justify-content: center; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; background: white; cursor: pointer; transition: all 0.2s;",
+            onmouseover: "this.style.borderColor='#d1d5db'; this.style.transform='translateY(-1px)'; this.style.boxShadow='0 2px 4px rgba(0,0,0,0.05)';",
+            onmouseout: "this.style.borderColor='#e5e7eb'; this.style.transform='translateY(0)'; this.style.boxShadow='none';" do %>
+          <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" width="18" style="margin-right: 8px;" alt="Google">
+          <span style="font-size: 13px; font-weight: 500; color: #374151;">Google</span>
+        <% end %>
+
+       
+      </div>
+
+      <div style="margin-top: 32px; text-align: center; font-size: 14px; color: #6b7280;">
+        <p style="margin: 0;">
+          Έχετε ήδη λογαριασμό; 
+          <%= link_to "Συνδεθείτε", new_session_path(resource_name), 
+              style: "color: #111827; text-decoration: none; font-weight: 600; transition: color 0.2s;",
+              onmouseover: "this.style.color='#4f46e5';",
+              onmouseout: "this.style.color='#111827';" %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

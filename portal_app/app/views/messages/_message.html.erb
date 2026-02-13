@@ -1,0 +1,5 @@
+<%# app/views/messages/_message.html.erb %>
+<div style="padding: 8px; background: <%= message.user == current_user ? '#e0e7ff' : '#f3f4f6' %>; border-radius: 8px; align-self: <%= message.user == current_user ? 'flex-end' : 'flex-start' %>; max-width: 80%;">
+  <strong style="font-size: 12px;"><%= message.user.name %>:</strong>
+  <p style="margin: 0;"><%= message.body %></p>
+</div>
